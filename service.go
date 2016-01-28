@@ -10,6 +10,6 @@ func New(c *http.Client, token string) *Service {
 
 //TODO: OAUTH 2.0
 type Service struct {
-	c      *http.Client
-	token  string
+	c     *http.Client
+	token string
 }

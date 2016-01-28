@@ -1,12 +1,12 @@
 package dropbox4go
 
 import (
-	"time"
-	"net/http"
-	"fmt"
 	"encoding/json"
+	"fmt"
 	"io"
 	"io/ioutil"
+	"net/http"
+	"time"
 )
 
 const api = "https://content.dropboxapi.com/2/files/upload"
@@ -17,23 +17,23 @@ type Request struct {
 }
 
 type Parameters struct {
-	Path string `json:"path"`
-	Mode string `json:"mode"`
-	AutoRename bool `json:"autorename"`
+	Path           string `json:"path"`
+	Mode           string `json:"mode"`
+	AutoRename     bool   `json:"autorename"`
 	ClientModified string `json:"client_modified,omitempty"`
-	Mute bool `json:"mute"`
+	Mute           bool   `json:"mute"`
 }
 
 type Response struct {
-	Name string `json:"name"`
-	PathLower string `json:"path_lower"`
+	Name           string    `json:"name"`
+	PathLower      string    `json:"path_lower"`
 	ClientModified time.Time `json:"client_modified"`
 	ServerModified time.Time `json:"server_modified"`
-	Rev string `json:"rev"`
-	Size int `json:"size"`
-	Id string `json:"id,omitempty"`
-	MediaInfo string `json:"media_info,omitempty"`
-	SharingInfo string `json:"sharing_info,omitempty"`
+	Rev            string    `json:"rev"`
+	Size           int       `json:"size"`
+	Id             string    `json:"id,omitempty"`
+	MediaInfo      string    `json:"media_info,omitempty"`
+	SharingInfo    string    `json:"sharing_info,omitempty"`
 }
 
 func (s *Service) Upload(request Request) (*Response, error) {
